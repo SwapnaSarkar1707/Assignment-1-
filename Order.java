@@ -1,51 +1,20 @@
-public class Order {
-    private String productName;
-    private double unitPrice;
+class Order{
+    private String name;
+    private double price;
     private int quantity;
-
-    public Order(String name, double price, int qty) throws Exception {
-        this.productName = name;
-        setUnitPrice(price);
-        setQuantity(qty);
-    }
-
-    public void setUnitPrice(double price) throws Exception {
-        if (price <= 0) {
-            throw new Exception("Error: Unit price must be greater than zero.");
+    public Order(String name,double price,int quantity) throws Exception{
+        if(price<=0||quantity<=0){
+            throw new Exception("Price and Quantity is positive .");
         }
-        this.unitPrice = price;
+        this.name=name;
+        this.price=price;
+        this.quantity=quantity;
     }
-
-    public void setQuantity(int qty) throws Exception {
-        if (qty <= 0) {
-            throw new Exception("Error: Quantity must be greater than zero.");
-        }
-        this.quantity = qty;
+    public double calculateTotal(){
+      return price*quantity;
     }
-
-    public double getTotal() {
-        return unitPrice * quantity;
-    }
-
     @Override
-    public String toString() {
-        return productName + " - " + quantity + " pcs x " + unitPrice + " = " + getTotal();
-    }
-
-    public static void main(String[] args) {
-        try {
-            System.out.println("--- Order Test ---");
-            Order o1 = new Order("Gaming Mouse", 25.75, 3);
-            Order o2 = new Order("Mechanical Keyboard", 120.0, 1);
-            
-            System.out.println(o1);
-            System.out.println(o2);
-
-            System.out.println("--- Invalid Order Attempt ---");
-            Order o3 = new Order("Laptop", -500, 1); 
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+     public String toString(){
+     return "Item: "+name+"| Price: "+ price+"Quantity:"+quantity+"|Total:"+calculateTotal();
     }
 }
