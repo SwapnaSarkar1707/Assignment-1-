@@ -1,20 +1,25 @@
-class Order{
+package com.basecase.shop;
+
+public class Order {
     private String name;
     private double price;
     private int quantity;
-    public Order(String name,double price,int quantity) throws Exception{
-        if(price<=0||quantity<=0){
-            throw new Exception("Price and Quantity is positive .");
+
+    public Order(String name, double price, int quantity) throws Exception {
+        if (price <= 0 || quantity <= 0) {
+            throw new Exception("Price and Quantity must be positive!");
         }
-        this.name=name;
-        this.price=price;
-        this.quantity=quantity;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
     }
-    public double calculateTotal(){
-      return price*quantity;
+
+    public double calculateTotal() {
+        return price * quantity;
     }
+
     @Override
-     public String toString(){
-     return "Item: "+name+"| Price: "+ price+"Quantity:"+quantity+"|Total:"+calculateTotal();
+    public String toString() {
+        return name + " - " + quantity + " pcs x " + price + " = " + calculateTotal();
     }
 }
