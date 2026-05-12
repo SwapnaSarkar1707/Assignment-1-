@@ -1,4 +1,4 @@
-package com.basecase.shop;
+package project4;
 
 import java.util.ArrayList;
 import java.util.Scanner;
